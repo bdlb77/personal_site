@@ -6,12 +6,14 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 import Intro from "../components/Intro"
 import AboutMe from "../components/AboutMe"
+import Projects from "../components/Projects"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="BL" />
     <Intro />
     <AboutMe />
+    <Projects />
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
     </div>
