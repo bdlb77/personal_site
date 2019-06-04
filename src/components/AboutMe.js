@@ -1,15 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-
+import Image from "./image";
 const AboutMeStyles = styled.div`
   padding: 3rem 5vw;
   height: 100vh;
   display: grid;
   grid-template-columns: 60% 40%;
+  align-items: center;
   p {
     font-size: 1.5rem;
     line-height: 3.5rem;
     text-shadow: 0px 0px 1px ${props => props.theme.snow};
+    margin-right: 2rem;
+  }
+  .pic {
+    align-self: center;
   }
 `;
 const AboutMe = props => (
@@ -24,7 +29,9 @@ const AboutMe = props => (
         others who also love gaming.
       </p>
     </div>
-    <div className="pic">Picture will be here</div>
+    <div className="pic">
+      <Image />
+    </div>
   </AboutMeStyles>
 );
 

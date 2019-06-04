@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import bryimg from "../images/bryimg.jpg";
 const ProjectStyles = styled.div`
   width: 30vw;
   height: 120vh;
@@ -34,7 +34,7 @@ const ProjectStyles = styled.div`
 const Project = props => {
   return (
     <ProjectStyles>
-      <img src="" alt="image pic" />
+      <img src={props.image} alt="Self Portrait" />
       <div className="icons-wrapper">
         <div className="icons icons-left">
           <div className="icon" />

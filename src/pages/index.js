@@ -8,17 +8,23 @@ import Intro from "../components/Intro";
 import AboutMe from "../components/AboutMe";
 import Projects from "../components/Projects";
 import Contributions from "../components/Contributions";
+import backgroundBg from "../images/bgbg.svg";
+import styled from "styled-components";
 
+const BGstyles = styled.div`
+  background: url(${backgroundBg});
+  background-size: contain;
+  background-repeat: no-repeat;
+`;
 const HomePage = () => (
   <Layout>
     <SEO title="BL" />
     <Intro />
-    <AboutMe />
-    <Projects />
-    {/* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div> */}
-    <Contributions />
+    <BGstyles>
+      <AboutMe />
+      <Projects />
+      <Contributions />
+    </BGstyles>
   </Layout>
 );
 
