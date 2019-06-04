@@ -1,12 +1,17 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
+import Project from "./Project";
 
+const ProjectsList = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
 const Projects = props => (
-  <div>
-    <div>projects</div>
-    <div>projects</div>
-    <div>projects</div>
-  </div>
-)
+  <ProjectsList>
+    <Project />
+    <Project />
+    <Project />
+  </ProjectsList>
+);
 
-export default Projects
+export default Projects;

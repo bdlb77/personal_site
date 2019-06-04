@@ -1,17 +1,17 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
 const AboutMeStyles = styled.div`
   padding: 3rem 5vw;
-  height: 80vh;
+  height: 100vh;
   display: grid;
   grid-template-columns: 60% 40%;
   p {
     font-size: 1.5rem;
-    line-height: 2rem;
+    line-height: 3.5rem;
     text-shadow: 0px 0px 1px ${props => props.theme.snow};
   }
-`
+`;
 const AboutMe = props => (
   <AboutMeStyles>
     <div className="about_me">
@@ -26,6 +26,6 @@ const AboutMe = props => (
     </div>
     <div className="pic">Picture will be here</div>
   </AboutMeStyles>
-)
+);
 
-export default AboutMe
+export default AboutMe;
