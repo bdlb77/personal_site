@@ -5,7 +5,7 @@ const ProjectStyles = styled.div`
   width: 30vw;
   height: 120vh;
   display: grid;
-  grid-template-rows: 30% 50% 20%;
+  grid-template-rows: 25% 55% 20%;
   img {
     height: 100%;
     width: 100%;

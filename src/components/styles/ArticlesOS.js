@@ -5,6 +5,7 @@ const ArticlesOS = styled.div`
   grid-template-rows: 1fr 1fr;
   height: 100%;
   align-items: center;
+  margin-top: 4rem;
 `;
 
 export default ArticlesOS;

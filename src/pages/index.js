@@ -13,8 +13,9 @@ import styled from "styled-components";
 
 const BGstyles = styled.div`
   background: url(${backgroundBg});
-  background-size: contain;
   background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
 `;
 const HomePage = () => (
   <Layout>
