@@ -5,12 +5,12 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
-import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
-import Header from "./header"
-import "./layout.scss"
+import React from "react";
+import PropTypes from "prop-types";
+import { StaticQuery, graphql } from "gatsby";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import Header from "./header";
+import "./layout.scss";
 
 const theme = {
   purple: "#9B51E0",
@@ -20,7 +20,7 @@ const theme = {
   black: "#130c16",
   lgBreak: "1300px",
   maxWidth: "1000px",
-}
+};
 createGlobalStyle` 
   html{
     box-sizing: border-box;
@@ -41,7 +41,7 @@ createGlobalStyle`
     text-decoration: none;
     color: ${theme.purple};
   }
-`
+`;
 const LayoutPage = styled.div`
   margin: 0 auto;
   padding-top: 0px 1.0875rem 1.45rem;
@@ -54,8 +54,8 @@ const LayoutPage = styled.div`
   );
   min-height: 100vh;
   color: ${props => props.theme.snow};
-`
-const Inner = styled.main``
+`;
+const Inner = styled.main``;
 
 const Layout = ({ children }) => (
   // <StaticQuery
@@ -81,10 +81,10 @@ const Layout = ({ children }) => (
   </ThemeProvider>
   // )}
   // />
-)
+);
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
