@@ -20,6 +20,7 @@ const theme = {
   black: "#130c16",
   lgBreak: "1300px",
   maxWidth: "1000px",
+  boxShadow: `0px 0px 24px #9B51E0`,
 };
 createGlobalStyle` 
   html{

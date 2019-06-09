@@ -14,11 +14,43 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-github-api`,
+      options: {
+        // token: required by the GitHub API
+        token: "a6643b19ff4bd4fce8076377654fc8326ada3428",
+
+        // GraphQLquery: defaults to a search query
+        graphQLQuery: `query Repository ($owner: String!, $name: String!) {
+          repository(name: $name, owner: $owner){
+            owner {
+              login
+              avatarUrl(size: 150)
+            }
+            name
+            description
+            pullRequest(number: 1492) {
+              url
+              author
+              {
+                login
+              }
+              authorAssociation
+              mergedAt
+             
+            }
+          }
+        }`,
+
+        // variables: defaults to variables needed for a search query
+        variables: { owner: "NativeScript", name: "docs" },
+      },
+    },
+    {
       resolve: "gatsby-source-dev",
       options: {
         // This is your username on Dev.to
-        username: 'bdlb77'
-      }
+        username: "bdlb77",
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -41,4 +73,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
