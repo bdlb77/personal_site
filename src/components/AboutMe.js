@@ -15,6 +15,7 @@ const AboutMeStyles = styled.div`
   }
   .pic {
     align-self: center;
+    box-shadow: 0 0 24px ${props => props.theme.black};
   }
 `;
 const AboutMe = props => (
