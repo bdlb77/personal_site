@@ -3,12 +3,12 @@ import styled from "styled-components";
 import backgroundBg from "../images/background.svg";
 const IntroStyles = styled.div`
   width: 100vw;
-  height: 126vh;
+  height: 110vh;
   margin: 0 auto;
   background: url(${backgroundBg});
   background-size: cover;
-  background-position: top center;
-  background-position: left 39% bottom 21%;
+  background-position: top top;
+  background-position: left 39% bottom 4%;
 `;
 const IntroWrapper = styled.div`
   padding: 5vw;

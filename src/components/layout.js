@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import Header from "./header";
+import Footer from "./Footer";
 import "./layout.scss";
 
 const theme = {
@@ -73,11 +74,11 @@ const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <LayoutPage>
       <Inner>{children}</Inner>
-      <footer>
+      <Footer>
         © {new Date().getFullYear()}, Built with 💙 by
         {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      </Footer>
     </LayoutPage>
   </ThemeProvider>
   // )}

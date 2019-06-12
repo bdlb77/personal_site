@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 module.exports = {
   siteMetadata: {
     title: `Bryan Leighton`,
@@ -17,7 +20,7 @@ module.exports = {
       resolve: `gatsby-source-github-api`,
       options: {
         // token: required by the GitHub API
-        token: "a6643b19ff4bd4fce8076377654fc8326ada3428",
+        token: process.env.GITHUB_TOKEN,
 
         // GraphQLquery: defaults to a search query
         graphQLQuery: `query Repository ($owner: String!, $name: String!) {
