@@ -1,7 +1,7 @@
 import React from "react";
+import styled from "styled-components";
 import OpenSources from "./OpenSources";
 import Articles from "./Articles";
-import styled from "styled-components";
 const ContributionsStyles = styled.section`
   margin-top: 5rem;
   display: grid;
