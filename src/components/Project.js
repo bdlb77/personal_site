@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import bryimg from "../images/bryimg.jpg";
+import Rails from "../assets/rails.svg";
 const ProjectStyles = styled.div`
   width: 30vw;
   height: 120vh;
@@ -43,6 +44,21 @@ const ProjectStyles = styled.div`
     }
   }
 `;
+
+const StackStyles = styled.div`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: ${props => props.theme.darkGray};
+  box-shadow: ${props => props.theme.boxShadow};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    width: 65%;
+    height: 65%;
+  }
+`;
 const Project = props => {
   return (
     <ProjectStyles>
@@ -51,16 +67,15 @@ const Project = props => {
       </a>
       <div className="icons-wrapper">
         <div className="icons icons-left">
-          <div className="icon" />
-          <div className="icon" />
-          <div className="icon" />
-          <div className="icon" />
+          {props.stack.slice(0, 3).map(stack => {
+            let Stack = stack;
+            return <StackWrapper stack={stack} />;
+          })}
         </div>
         <div className="icons icons-right">
-          <div className="icon" />
-          <div className="icon" />
-          <div className="icon" />
-          <div className="icon" />
+          {props.stack.slice(3).map(stack => {
+            return <StackWrapper stack={stack} />;
+          })}
         </div>
       </div>
       <div className="description">
@@ -69,5 +84,12 @@ const Project = props => {
     </ProjectStyles>
   );
 };
-
+const StackWrapper = props => {
+  let Stack = props.stack;
+  return (
+    <StackStyles>
+      <Stack />
+    </StackStyles>
+  );
+};
 export default Project;

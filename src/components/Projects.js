@@ -4,7 +4,14 @@ import Project from "./Project";
 import dangApp from "../images/dang_app.jpg";
 import immigration from "../images/immigration_works.jpg";
 import priicer from "../images/priicer_app.jpg";
-
+import rails from "../assets/rails.svg";
+import ruby from "../assets/ruby.svg";
+import node from "../assets/node.svg";
+import express from "../assets/express.svg";
+import javascript from "../assets/javascript.svg";
+import html from "../assets/html.svg";
+import css from "../assets/css.svg";
+import postgres from "../assets/postgres.svg";
 const ProjectsList = styled.div`
   height: 120vh;
   display: flex;
@@ -16,7 +23,7 @@ const projects = [
     image: immigration,
     description:
       "Berlin Tech hackathon 3rd Place Winner. An app for navigating the legal boundaries of the hiring process of refugees in Germany.",
-    stack: [],
+    stack: [rails, ruby, javascript, html, css, postgres],
     url: "https://immigration-legaltech.herokuapp.com/",
   },
   {
@@ -24,17 +31,18 @@ const projects = [
     image: priicer,
     description:
       "EKM Metering Inc. An app to measure meters and automatically turn on and off household appliances based on the price of electricity.",
-    stack: [],
+    stack: [rails, ruby, javascript, html, css /*"stimulus" */],
     url: "https://www.priicer.com/",
   },
   {
-    title: "Now That's Delicious!",
+    title: "Meal Buddy",
     image: dangApp,
-    description: "A Node.js app tutorial from Wes Bos. ",
-    stack: [],
-    url: "https://now-thats-delicious-bl.herokuapp.com/",
+    description: "A Node.js app personal project",
+    stack: [node, express, javascript, html, css /* mongodb */],
+    url: "https://meal-buddy.herokuapp.com/",
   },
 ];
+console.log(projects[0].stack);
 const Projects = props => (
   <ProjectsList>
     {projects.map(project => (
