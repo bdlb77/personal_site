@@ -2,7 +2,9 @@ import React from "react";
 import ArticlesOS from "./styles/ArticlesOS";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-
+const OpenSourceWrapper = styled.div`
+  display: flex;
+`;
 const OpenSourceStyle = styled.article`
   align-self: center;
   text-decoration: none;
@@ -17,8 +19,8 @@ const OpenSourceStyle = styled.article`
     opacity: 0.7;
     transform: scale(1.02);
   }
-  h1 {
-    font-size: 3rem;
+  h2 {
+    font-size: 2.5rem;
   }
   a {
     display: grid;
@@ -26,19 +28,26 @@ const OpenSourceStyle = styled.article`
     color: ${props => props.theme.snow};
     text-decoration: none;
   }
+
+  @media screen and (max-width: 1024px) {
+    width: 80vw;
+  }
 `;
 const OpenSources = ({ githubData }) => {
   console.log(githubData);
   return (
     <ArticlesOS>
-      <OpenSource repo={githubData.data.repository} />
+      <h1 className="title1">Open Source</h1>
+      <OpenSourceWrapper>
+        <OpenSource repo={githubData.data.repository} />
+      </OpenSourceWrapper>
     </ArticlesOS>
   );
 };
 const OpenSource = ({ repo }) => (
   <OpenSourceStyle>
     <a href={repo.pullRequest.url} target="_blank">
-      <h1>{repo.owner.login}</h1>
+      <h2>{repo.owner.login}</h2>
       <h3>{repo.pullRequest.mergedAt}</h3>
     </a>
   </OpenSourceStyle>

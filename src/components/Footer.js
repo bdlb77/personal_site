@@ -11,11 +11,13 @@ import {
 const FooterStyles = styled.footer`
   padding: 2rem 0;
   height: 40vh;
-  box-shadow: ${props => props.theme.boxShadow};
+  box-shadow: 0 -5px 20px -5px ${props => props.theme.purple};
   background: ${props => props.theme.darkGray};
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  flex-wrap: wrap;
+
   ul {
     a {
       text-decoration: none;
@@ -38,8 +40,16 @@ const FooterStyles = styled.footer`
   }
   .footer_sig {
     margin-right: 2rem;
+    text-align: center;
     a {
       color: ${props => props.theme.purple};
+    }
+  }
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+    ul,
+    .footer_sig {
+      width: 100%;
     }
   }
 `;

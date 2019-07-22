@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const ArticleStyles = styled.article`
   align-self: center;
-  height: 300px;
   width: 600px;
   text-shadow: 1px 1px 1px ${props => props.theme.snow};
   a {
@@ -21,13 +20,16 @@ const ArticleStyles = styled.article`
       transform: scale(1.02);
     }
   }
+  @media screen and (max-width: 1024px) {
+    width: 80vw;
+  }
 `;
 const Article = ({ article }) => (
   <ArticleStyles>
     <a href={`https://dev.to${article.path}`} target="_blank">
       <img src={article.cover_image} alt={article.title} />
-      <h1>{article.title}</h1>
-      <h2>{article.readable_publish_date}</h2>
+      <h2>{article.title}</h2>
+      <h3>{article.readable_publish_date}</h3>
     </a>
   </ArticleStyles>
 );

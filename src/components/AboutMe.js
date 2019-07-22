@@ -3,9 +3,10 @@ import styled from "styled-components";
 import Image from "./image";
 const AboutMeStyles = styled.div`
   padding: 3rem 5vw;
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-auto-flow: row;
   align-items: center;
   p {
     font-size: 1.5rem;
