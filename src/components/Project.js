@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import bryimg from "../images/bryimg.jpg";
 const ProjectStyles = styled.div`
-  width: 30vw;
-  height: 120vh;
+  margin: 1rem 0;
+  min-height: 120vh;
   display: grid;
   grid-template-rows: 30% 50% 20%;
+  margin: 0 1rem 1rem 1rem;
   img {
     height: 100%;
     width: 100%;
     transition: all 0.2s ease;
-    box-shadow: 0 0 24px ${props => props.theme.black};
+    box-shadow: ${props => props.theme.boxShadow};
     &:hover {
       transform: scale(1.01);
       opacity: 0.7;
@@ -37,10 +37,41 @@ const ProjectStyles = styled.div`
     color: ${props => props.theme.snow};
     box-shadow: ${props => props.theme.boxShadow};
     padding: 1rem;
+    overflow-y: auto;
+
     p {
       font-size: 1.4rem;
       line-height: 2.1rem;
     }
+  }
+  @media screen and (max-width: 770px) {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    min-height: unset;
+    .icons {
+      width: inherit;
+      display: flex;
+      flex-direction: unset;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+  }
+`;
+
+const StackStyles = styled.div`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: ${props => props.theme.darkGray};
+  box-shadow: ${props => props.theme.boxShadow};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg,
+  img {
+    width: 65%;
+    height: 65%;
   }
 `;
 const Project = props => {
@@ -51,16 +82,15 @@ const Project = props => {
       </a>
       <div className="icons-wrapper">
         <div className="icons icons-left">
-          <div className="icon" />
-          <div className="icon" />
-          <div className="icon" />
-          <div className="icon" />
+          {props.stack.slice(0, 3).map(stack => {
+            let Stack = stack;
+            return <StackWrapper stack={stack} />;
+          })}
         </div>
         <div className="icons icons-right">
-          <div className="icon" />
-          <div className="icon" />
-          <div className="icon" />
-          <div className="icon" />
+          {props.stack.slice(3).map(stack => {
+            return <StackWrapper stack={stack} />;
+          })}
         </div>
       </div>
       <div className="description">
@@ -69,5 +99,12 @@ const Project = props => {
     </ProjectStyles>
   );
 };
-
+const StackWrapper = props => {
+  let Stack = props.stack;
+  return (
+    <StackStyles>
+      <Stack />
+    </StackStyles>
+  );
+};
 export default Project;

@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import Header from "./header";
+import Footer from "./Footer";
 import "./layout.scss";
 
 const theme = {
@@ -20,7 +21,7 @@ const theme = {
   black: "#130c16",
   lgBreak: "1300px",
   maxWidth: "1000px",
-  boxShadow: `0px 0px 24px #9B51E0`,
+  boxShadow: `0px 20px 24px -15px #333`,
 };
 createGlobalStyle` 
   html{
@@ -73,11 +74,11 @@ const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <LayoutPage>
       <Inner>{children}</Inner>
-      <footer>
+      <Footer>
         © {new Date().getFullYear()}, Built with 💙 by
         {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      </Footer>
     </LayoutPage>
   </ThemeProvider>
   // )}
