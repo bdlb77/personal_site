@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { CSSTransition } from "react-transition-group";
 import IconList from "./IconList";
 const ProjectStyles = styled.div`
   margin: 1rem 0;
-  min-height: 120vh;
-  display: grid;
-  grid-template-rows: 30% 50% 20%;
+  display: flex;
+  flex-direction: column;
   margin: 0 1rem 1rem 1rem;
+  transition: 1s all ease;
+
   img {
     height: 100%;
     width: 100%;
@@ -18,12 +18,23 @@ const ProjectStyles = styled.div`
       opacity: 0.7;
     }
   }
+  ${props =>
+    props.isActive
+      ? `
+          height: 150vh;
+        
+        `
+      : `
+          height: 100vh;
+          
+        `};
   .description {
     background-color: ${props => props.theme.darkGray};
     color: ${props => props.theme.snow};
     box-shadow: ${props => props.theme.boxShadow};
     padding: 1rem;
     overflow-y: auto;
+    height: 15rem;
     transition: all 1s ease;
 
     p {
@@ -31,35 +42,25 @@ const ProjectStyles = styled.div`
       line-height: 2.1rem;
     }
   }
+  .icons-enter {
+    opacity: 0;
+    height: 0;
+  }
+  .icons-enter-active {
+    opacity: 1;
+    transition: opacity 0.2s;
+    height: 50vh;
+  }
+  .icons-exit-active {
+    opacity: 1;
+    height: 50vh;
+  }
+  .icons-exit-active {
+    transition: opacity 0.2s;
+    opacity: 0;
+    height: 0;
+  }
 
-  .description-enter {
-    transform: translateY(0);
-  }
-  .description-enter-active {
-    /* transition: all 1s ease; */
-    transform: translateY(150px);
-  }
-  .description-exit-active {
-    /* transition: all 1s ease; */
-    transform: translateY(150px);
-  }
-  .description-exit {
-    transform: translateY(0);
-  }
-  .stack-enter {
-    opacity: 0;
-  }
-  .stack-enter-active {
-    opacity: 1;
-    transition: all 1s ease;
-  }
-  .stack-exit {
-    opacity: 1;
-  }
-  .stack-exit-active {
-    opacity: 0;
-    transition: all 1s ease;
-  }
   @media screen and (max-width: 770px) {
     width: 80vw;
     display: flex;
@@ -69,31 +70,18 @@ const ProjectStyles = styled.div`
 `;
 const Project = props => {
   const [showStack, setShowStack] = useState(false);
+
   return (
-    <ProjectStyles>
+    <ProjectStyles isActive={showStack}>
       <a href={props.url} target="_blank">
         <img src={props.image} alt="Self Portrait" />
       </a>
-      {showStack && (
-        <CSSTransition
-          in={showStack}
-          timeout={{ enter: 2000, exit: 2000 }}
-          classNames="stack"
-          className="stack"
-          unmountOnExit
-        >
-          <IconList stack={props.stack} />
-        </CSSTransition>
-      )}
-      <CSSTransition
-        in={showStack}
-        timeout={{ enter: 500, exit: 500 }}
-        classNames="description"
-      >
-        <div className="description" onClick={() => setShowStack(!showStack)}>
-          <p>{props.description}</p>
-        </div>
+      <CSSTransition in={showStack} timeout={300} classNames="icons">
+        <IconList stack={props.stack} className="icon-list" />
       </CSSTransition>
+      <div className="description" onClick={() => setShowStack(!showStack)}>
+        <p>{props.description}</p>
+      </div>
     </ProjectStyles>
   );
 };

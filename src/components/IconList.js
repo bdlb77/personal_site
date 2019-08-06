@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { CSSTransition } from "react-transition-group";
 
 const IconsListStyles = styled.div`
   display: flex;
   justify-content: space-around;
+  height: 0;
   .icons {
     display: flex;
     flex-direction: column;
@@ -43,6 +45,8 @@ const StackStyles = styled.div`
 `;
 const IconList = props => {
   return (
+  <CSSTransition in={showStack} timeout={300} classNames="icons">
+
     <IconsListStyles>
       <div className="icons icons-left">
         {props.stack.slice(0, 3).map((Stack, index) => (
@@ -59,6 +63,7 @@ const IconList = props => {
         ))}
       </div>
     </IconsListStyles>
+    <CSSTransition/>
   );
 };
 export default IconList;
