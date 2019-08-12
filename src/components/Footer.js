@@ -45,11 +45,17 @@ const FooterStyles = styled.footer`
       color: ${props => props.theme.purple};
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1067px) {
     justify-content: center;
     ul,
     .footer_sig {
       width: 100%;
+    }
+    .footer_sig {
+      margin: 0;
+    }
+    ul {
+      padding: 0;
     }
   }
 `;

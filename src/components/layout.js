@@ -7,9 +7,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import { StaticQuery, graphql } from "gatsby";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
-import Header from "./header";
 import Footer from "./Footer";
 import "./layout.scss";
 
