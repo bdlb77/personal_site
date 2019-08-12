@@ -83,7 +83,7 @@ const Footer = props => (
         </a>
       </li>
       <li>
-        <a href="mailto:bryan.leigh77@gmail.com" target="_blank">
+        <a href="mailto:bryanleigh.dev@gmail.com" target="_blank">
           <FaEnvelope />
         </a>
       </li>
@@ -93,7 +93,7 @@ const Footer = props => (
       © {new Date().getFullYear()}, Designed and Developed with{" "}
       <a href="https://www.gatsbyjs.org">Gatsby</a> and 💙 by
       {` `}
-      Bryan Leighton
+      Bryan
     </div>
   </FooterStyles>
 );
