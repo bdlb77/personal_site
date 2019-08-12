@@ -48,11 +48,11 @@ const ProjectsSection = styled.section`
 `;
 const ProjectsList = styled.div`
   min-height: 120vh;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  align-items: center;
-  justify-items: center;
-  margin: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 1rem auto;
   margin-top: 4rem;
 
   @media screen and (max-width: 770px) {

@@ -18,6 +18,13 @@ const AboutMeStyles = styled.div`
     align-self: center;
     box-shadow: 0 0 24px ${props => props.theme.black};
   }
+
+  @media screen and (max-width: 450px) {
+    padding: 3rem 0;
+    p {
+      padding-left: 1rem;
+    }
+  }
 `;
 const AboutMe = props => (
   <AboutMeStyles>

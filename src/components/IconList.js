@@ -2,7 +2,10 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 
 const fadeIn = keyframes`
-  0%, 20% {
+  0%  {
+    opacity: 0;
+  }
+  20% {
     opacity: 0;
   }
 
@@ -19,6 +22,9 @@ const fadeOut = keyframes`
    20%, 100% {
     opacity: 0;
   }
+
+  100% {
+  }
 `;
 const IconsListStyles = styled.div`
   display: flex;
@@ -26,17 +32,25 @@ const IconsListStyles = styled.div`
   transition: all 2s ease;
   height: 60vh;
   visibility: ${props => (props.isActive ? "visible" : "hidden")};
-  transition: visibility 0.5s linear;
+  transition: height 1s linear;
 
-  .icons {
-    ${StackStyles} div:nth-child(1) {
-      animation: ${props => (props.isActive ? fadeIn : fadeOut)} 0.5s linear;
-    }
-    ${StackStyles} div:nth-child(2) {
-      animation: ${props => (props.isActive ? fadeIn : fadeOut)} 1s linear;
-    }
-    ${StackStyles} div:nth-child(3) {
-      animation: ${props => (props.isActive ? fadeIn : fadeOut)} 1.5s linear;
+  @media screen and (max-width: 449px) {
+    visibility: visible;
+  }
+  @media screen and (min-width: 450px) and (max-width: 1067px) {
+    height: 20vh;
+  }
+  @media screen and (min-width: 450px) {
+    .icons {
+      ${StackStyles} div:nth-child(1) {
+        animation: ${props => props.isActive && fadeIn} 0.5s linear;
+      }
+      ${StackStyles} div:nth-child(2) {
+        animation: ${props => props.isActive && fadeIn} 0.7s linear;
+      }
+      ${StackStyles} div:nth-child(3) {
+        animation: ${props => props.isActive && fadeIn} 1s linear;
+      }
     }
   }
   .icons {
@@ -51,7 +65,7 @@ const IconsListStyles = styled.div`
     background: ${props => props.theme.snow};
   }
 
-  @media screen and (max-width: 770px) {
+  @media screen and (max-width: 1067px) {
     .icons {
       width: inherit;
       display: flex;

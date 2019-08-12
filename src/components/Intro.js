@@ -11,8 +11,9 @@ const IntroStyles = styled.div`
   background-position: left 39% bottom 4%;
 `;
 const IntroWrapper = styled.div`
-  padding: 5vw;
+  padding: 7rem 1rem;
   font-size: 8rem;
+  margin-top: -5rem;
   h1 {
     margin: 0;
     font-size: 3.5rem;

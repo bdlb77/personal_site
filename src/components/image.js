@@ -19,7 +19,7 @@ const Image = () => (
       query {
         profileImage: file(relativePath: { eq: "bryimg.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 500) {
+            fluid(maxWidth: 400) {
               ...GatsbyImageSharpFluid
             }
           }

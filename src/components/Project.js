@@ -7,9 +7,9 @@ const ProjectStyles = styled.div`
   flex-direction: column;
   margin: 0 1rem 1rem 1rem;
   transition: 1s all ease;
-
-  @media screen and (max-width: 770px) {
-    width: 80vw;
+  width: 30%;
+  @media screen and (max-width: 1067px) {
+    width: 80%;
     display: flex;
     flex-direction: column;
     min-height: unset;
@@ -17,7 +17,7 @@ const ProjectStyles = styled.div`
 `;
 
 const StyledImage = styled.a`
-  height: 35vh;
+  height: 300px;
   margin-bottom: 1rem;
   img {
     height: 100%;
@@ -29,6 +29,10 @@ const StyledImage = styled.a`
       opacity: 0.7;
     }
   }
+
+  @media screen and (min-width: 768px) and (max-width: 1076px) {
+    height: 400px;
+  }
 `;
 
 const StyledDesc = styled.div`
@@ -39,16 +43,32 @@ const StyledDesc = styled.div`
   padding: 1rem;
   overflow-y: auto;
   height: 30vh;
-  transition: all 1s ease;
+  transition: all 1s ease, box-shadow 0.4s ease;
 
-  ${props =>
-    props.isActive
-      ? `
-    transform: translateY(0);
-  `
-      : `
-    transform: translateY(-60vh);
-  `}
+  &:hover {
+    box-shadow: 5px -20px 24px -15px #333;
+  }
+  @media screen and (min-width: 450px) and (max-width: 1067px) {
+    ${props =>
+      props.isActive
+        ? `
+      transform: translateY(-8vh);
+      `
+        : `
+      transform: translateY(-20vh);
+      `}
+  }
+
+  @media screen and (min-width: 1068px) {
+    ${props =>
+      props.isActive
+        ? `
+          transform: translateY(0);
+          `
+        : `
+          transform: translateY(-60vh);
+          `}
+  }
 
   p {
     font-size: 1rem;
@@ -60,15 +80,17 @@ const Project = props => {
 
   return (
     <ProjectStyles isActive={showStack}>
-      <a href={props.url} target="_blank">
+      <StyledImage href={props.url} target="_blank">
         <img src={props.image} alt="Self Portrait" />
-      </a>
-      <CSSTransition in={showStack} timeout={300} classNames="icons">
-        <IconList stack={props.stack} className="icon-list" />
-      </CSSTransition>
-      <div className="description" onClick={() => setShowStack(!showStack)}>
+      </StyledImage>
+      <IconList
+        stack={props.stack}
+        showStack={showStack}
+        className="icon-list"
+      />
+      <StyledDesc isActive={showStack} onClick={() => setShowStack(!showStack)}>
         <p>{props.description}</p>
-      </div>
+      </StyledDesc>
     </ProjectStyles>
   );
 };
