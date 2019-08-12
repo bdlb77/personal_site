@@ -1,11 +1,44 @@
 import React from "react";
-import styled from "styled-components";
-import { CSSTransition } from "react-transition-group";
+import styled, { keyframes } from "styled-components";
 
+const fadeIn = keyframes`
+  0%, 20% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  0% {
+    opacity: 1%;
+  }
+
+   20%, 100% {
+    opacity: 0;
+  }
+`;
 const IconsListStyles = styled.div`
   display: flex;
   justify-content: space-around;
-  height: 0;
+  transition: all 2s ease;
+  height: 60vh;
+  visibility: ${props => (props.isActive ? "visible" : "hidden")};
+  transition: visibility 0.5s linear;
+
+  .icons {
+    ${StackStyles} div:nth-child(1) {
+      animation: ${props => (props.isActive ? fadeIn : fadeOut)} 0.5s linear;
+    }
+    ${StackStyles} div:nth-child(2) {
+      animation: ${props => (props.isActive ? fadeIn : fadeOut)} 1s linear;
+    }
+    ${StackStyles} div:nth-child(3) {
+      animation: ${props => (props.isActive ? fadeIn : fadeOut)} 1.5s linear;
+    }
+  }
   .icons {
     display: flex;
     flex-direction: column;
@@ -17,6 +50,7 @@ const IconsListStyles = styled.div`
     border-radius: 50%;
     background: ${props => props.theme.snow};
   }
+
   @media screen and (max-width: 770px) {
     .icons {
       width: inherit;
@@ -44,26 +78,25 @@ const StackStyles = styled.div`
   }
 `;
 const IconList = props => {
-  return (
-  <CSSTransition in={showStack} timeout={300} classNames="icons">
+  const { showStack, stack } = props;
 
-    <IconsListStyles>
+  return (
+    <IconsListStyles isActive={showStack}>
       <div className="icons icons-left">
-        {props.stack.slice(0, 3).map((Stack, index) => (
-          <StackStyles key={index}>
+        {stack.slice(0, 3).map((Stack, index) => (
+          <StackStyles key={index} index={index}>
             <Stack />
           </StackStyles>
         ))}
       </div>
       <div className="icons icons-right">
-        {props.stack.slice(3).map((Stack, index) => (
+        {stack.slice(3).map((Stack, index) => (
           <StackStyles key={index}>
             <Stack />
           </StackStyles>
         ))}
       </div>
     </IconsListStyles>
-    <CSSTransition/>
   );
 };
 export default IconList;

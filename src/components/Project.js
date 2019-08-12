@@ -8,6 +8,17 @@ const ProjectStyles = styled.div`
   margin: 0 1rem 1rem 1rem;
   transition: 1s all ease;
 
+  @media screen and (max-width: 770px) {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    min-height: unset;
+  }
+`;
+
+const StyledImage = styled.a`
+  height: 35vh;
+  margin-bottom: 1rem;
   img {
     height: 100%;
     width: 100%;
