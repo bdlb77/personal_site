@@ -29,54 +29,30 @@ const StyledImage = styled.a`
       opacity: 0.7;
     }
   }
+`;
+
+const StyledDesc = styled.div`
+  margin-top: 1rem;
+  background-color: ${props => props.theme.darkGray};
+  color: ${props => props.theme.snow};
+  box-shadow: ${props => props.theme.boxShadow};
+  padding: 1rem;
+  overflow-y: auto;
+  height: 30vh;
+  transition: all 1s ease;
+
   ${props =>
     props.isActive
       ? `
-          height: 150vh;
-        
-        `
+    transform: translateY(0);
+  `
       : `
-          height: 100vh;
-          
-        `};
-  .description {
-    background-color: ${props => props.theme.darkGray};
-    color: ${props => props.theme.snow};
-    box-shadow: ${props => props.theme.boxShadow};
-    padding: 1rem;
-    overflow-y: auto;
-    height: 15rem;
-    transition: all 1s ease;
+    transform: translateY(-60vh);
+  `}
 
-    p {
-      font-size: 1.4rem;
-      line-height: 2.1rem;
-    }
-  }
-  .icons-enter {
-    opacity: 0;
-    height: 0;
-  }
-  .icons-enter-active {
-    opacity: 1;
-    transition: opacity 0.2s;
-    height: 50vh;
-  }
-  .icons-exit-active {
-    opacity: 1;
-    height: 50vh;
-  }
-  .icons-exit-active {
-    transition: opacity 0.2s;
-    opacity: 0;
-    height: 0;
-  }
-
-  @media screen and (max-width: 770px) {
-    width: 80vw;
-    display: flex;
-    flex-direction: column;
-    min-height: unset;
+  p {
+    font-size: 1rem;
+    line-height: 2.1rem;
   }
 `;
 const Project = props => {
