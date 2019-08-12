@@ -34,7 +34,6 @@ const OpenSourceStyle = styled.article`
   }
 `;
 const OpenSources = ({ githubData }) => {
-  console.log(githubData);
   return (
     <ArticlesOS>
       <h1 className="title1">Open Source</h1>

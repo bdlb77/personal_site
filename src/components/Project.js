@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import IconList from "./IconList";
 const ProjectStyles = styled.div`
   margin: 1rem 0;
-  min-height: 120vh;
-  display: grid;
-  grid-template-rows: 30% 50% 20%;
+  display: flex;
+  flex-direction: column;
   margin: 0 1rem 1rem 1rem;
+  transition: 1s all ease;
+  width: 30%;
+  @media screen and (max-width: 1067px) {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    min-height: unset;
+  }
+`;
+
+const StyledImage = styled.a`
+  height: 300px;
+  margin-bottom: 1rem;
   img {
     height: 100%;
     width: 100%;
@@ -16,95 +29,70 @@ const ProjectStyles = styled.div`
       opacity: 0.7;
     }
   }
-  .icons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  .icons-wrapper {
-    display: flex;
-    justify-content: space-around;
-  }
 
-  .icon {
-    height: 75px;
-    width: 75px;
-    border-radius: 50%;
-    background: ${props => props.theme.snow};
-  }
-  .description {
-    background-color: ${props => props.theme.darkGray};
-    color: ${props => props.theme.snow};
-    box-shadow: ${props => props.theme.boxShadow};
-    padding: 1rem;
-    overflow-y: auto;
-
-    p {
-      font-size: 1.4rem;
-      line-height: 2.1rem;
-    }
-  }
-  @media screen and (max-width: 770px) {
-    width: 80vw;
-    display: flex;
-    flex-direction: column;
-    min-height: unset;
-    .icons {
-      width: inherit;
-      display: flex;
-      flex-direction: unset;
-      flex-wrap: wrap;
-      margin: 1rem 0;
-    }
+  @media screen and (min-width: 768px) and (max-width: 1076px) {
+    height: 400px;
   }
 `;
 
-const StackStyles = styled.div`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+const StyledDesc = styled.div`
+  margin-top: 1rem;
   background-color: ${props => props.theme.darkGray};
+  color: ${props => props.theme.snow};
   box-shadow: ${props => props.theme.boxShadow};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  svg,
-  img {
-    width: 65%;
-    height: 65%;
+  padding: 1rem;
+  overflow-y: auto;
+  height: 30vh;
+  transition: all 1s ease, box-shadow 0.4s ease;
+
+  &:hover {
+    box-shadow: 5px -20px 24px -15px #333;
+  }
+  @media screen and (min-width: 450px) and (max-width: 1067px) {
+    ${props =>
+      props.isActive
+        ? `
+      transform: translateY(-8vh);
+      `
+        : `
+      transform: translateY(-20vh);
+      `}
+  }
+
+  @media screen and (min-width: 1068px) {
+    ${props =>
+      props.isActive
+        ? `
+          transform: translateY(0);
+          `
+        : `
+          transform: translateY(-60vh);
+          `}
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 2.1rem;
   }
 `;
 const Project = props => {
+  const [showStack, setShowStack] = useState(false);
+
   return (
-    <ProjectStyles>
-      <a href={props.url} target="_blank">
+    <ProjectStyles isActive={showStack}>
+      <StyledImage href={props.url} target="_blank">
         <img src={props.image} alt="Self Portrait" />
-      </a>
-      <div className="icons-wrapper">
-        <div className="icons icons-left">
-          {props.stack.slice(0, 3).map(stack => {
-            let Stack = stack;
-            return <StackWrapper stack={stack} />;
-          })}
-        </div>
-        <div className="icons icons-right">
-          {props.stack.slice(3).map(stack => {
-            return <StackWrapper stack={stack} />;
-          })}
-        </div>
-      </div>
-      <div className="description">
+      </StyledImage>
+      <IconList
+        stack={props.stack}
+        showStack={showStack}
+        className="icon-list"
+      />
+      <StyledDesc isActive={showStack} onClick={() => setShowStack(!showStack)}>
         <p>{props.description}</p>
-      </div>
+      </StyledDesc>
     </ProjectStyles>
   );
 };
-const StackWrapper = props => {
-  let Stack = props.stack;
-  return (
-    <StackStyles>
-      <Stack />
-    </StackStyles>
-  );
-};
+
 export default Project;
