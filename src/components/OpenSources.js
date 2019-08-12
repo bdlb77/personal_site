@@ -43,14 +43,23 @@ const OpenSources = ({ githubData }) => {
     </ArticlesOS>
   );
 };
-const OpenSource = ({ repo }) => (
-  <OpenSourceStyle>
-    <a href={repo.pullRequest.url} target="_blank">
-      <h2>{repo.owner.login}</h2>
-      <h3>{repo.pullRequest.mergedAt}</h3>
-    </a>
-  </OpenSourceStyle>
-);
+const OpenSource = ({ repo }) => {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+
+  return (
+    <OpenSourceStyle>
+      <a href={repo.pullRequest.url} target="_blank">
+        <h2>{repo.owner.login}</h2>
+        <h3>
+          {new Date(repo.pullRequest.mergedAt).toLocaleDateString(
+            "en-US",
+            options
+          )}
+        </h3>
+      </a>
+    </OpenSourceStyle>
+  );
+};
 
 export default () => (
   <StaticQuery
