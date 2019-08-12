@@ -30,12 +30,12 @@ const AboutMe = props => (
   <AboutMeStyles>
     <div className="about_me">
       <p>
-        My name is Bryan and I’m a Fullstack developer who loves to hack in Ruby
-        on Rails and JavaScript. I like to learn and try out new technologies
-        while strengthening my foundation in things that I already know. I love
-        gaming. And by that I mean I LOOOOOVE gaming. I’d love to move in to
-        Game Development, so I can built cool things I’d be able to share with
-        others who also love gaming.
+        My name is Bryan and I’m a Full Stack developer who loves to hack in
+        Ruby on Rails and JavaScript. I like to learn and try out new
+        technologies while strengthening my foundation in things that I already
+        know. I love gaming. And by that I mean I LOOOOOVE gaming. I’d love to
+        move in to Game Development, so I can built cool things I’d be able to
+        share with others who also love gaming.
       </p>
     </div>
     <div className="pic">

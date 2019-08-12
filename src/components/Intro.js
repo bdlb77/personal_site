@@ -37,7 +37,7 @@ class Intro extends Component {
               <h1>I'm Bryan!</h1>
             </div>
             <div className="self__job">
-              <h1>I am a Fullstack Developer</h1>
+              <h1>I am a Full Stack Developer</h1>
               <h1>
                 in <span>Tel Aviv</span>
               </h1>
