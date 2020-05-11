@@ -1,3 +1,6 @@
+let activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+console.log(`Using environment config: ${activeEnv}`)
+
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -23,29 +26,62 @@ module.exports = {
         token: process.env.GITHUB_TOKEN,
 
         // GraphQLquery: defaults to a search query
-        graphQLQuery: `query Repository ($owner: String!, $name: String!) {
-          repository(name: $name, owner: $owner){
+        graphQLQuery: `
+        query Repository ($owner1: String!, $name1: String!, $owner2: String!, $name2: String!, $owner3: String!, $name3: String!) {
+          mateStack: repository(name: $name1, owner: $owner1) {
+            owner {
+              login
+              avatarUrl(size: 150)
+            }
+            name
+            url
+            description
+            stargazers {
+              totalCount
+            }
+            primaryLanguage {
+              name
+            }
+          }
+            secretsStore: repository(name: $name2, owner: $owner2) {
+            owner {
+              login
+              avatarUrl(size: 150)
+            }
+            name
+            url
+            description
+            stargazers {
+              totalCount
+            }
+            primaryLanguage {
+              name
+            }
+          }
+          devTo: repository(name: $name3, owner: $owner3){
             owner {
               login
               avatarUrl(size: 150)
             }
             name
             description
-            pullRequest(number: 1492) {
-              url
-              author
-              {
-                login
-              }
-              authorAssociation
-              mergedAt
-             
+            url
+            stargazers{
+              totalCount
+            }
+						primaryLanguage {
+              name
             }
           }
-        }`,
+        }
+`,
 
         // variables: defaults to variables needed for a search query
-        variables: { owner: "NativeScript", name: "docs" },
+        variables: { 
+          owner1: "matestack", name1: "matestack-ui-core",
+          owner2: "Azure",  name2: "secrets-store-csi-driver-provider-azure",
+          owner3: "thepracticaldev",  name3: "dev.to"
+        },
       },
     },
     {

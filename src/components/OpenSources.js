@@ -3,14 +3,18 @@ import ArticlesOS from "./styles/ArticlesOS";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 const OpenSourceWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-row-gap: 2rem;
+  width: 80%;
 `;
 const OpenSourceStyle = styled.article`
+  position: relative;
   align-self: center;
   text-decoration: none;
-  padding: 2rem 0 2rem 2rem;
+  padding: 0 0 1rem 1rem;
   height: 300px;
-  width: 600px;
+  width: 450px;
   margin: 0 auto;
   background: ${props => props.theme.darkGray};
   box-shadow: ${props => props.theme.boxShadow};
@@ -23,10 +27,14 @@ const OpenSourceStyle = styled.article`
     font-size: 2.5rem;
   }
   a {
-    display: grid;
-    grid-auto-rows: 2fr 1fr;
-    color: ${props => props.theme.snow};
+        color: ${props => props.theme.snow};
     text-decoration: none;
+  }
+  img {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
   }
 
   @media screen and (max-width: 1024px) {
@@ -38,24 +46,24 @@ const OpenSources = ({ githubData }) => {
     <ArticlesOS>
       <h1 className="title1">Open Source</h1>
       <OpenSourceWrapper>
-        <OpenSource repo={githubData.data.repository} />
+        <OpenSource repo={githubData.data.mateStack} />
+        <OpenSource repo={githubData.data.secretsStore} />
+        <OpenSource repo={githubData.data.devTo} />
       </OpenSourceWrapper>
     </ArticlesOS>
   );
 };
 const OpenSource = ({ repo }) => {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-
+  // const options = { year: "numeric", month: "long", day: "numeric" };
+  const stars = `⭐️ ${repo.stargazers.totalCount}`
   return (
     <OpenSourceStyle>
-      <a href={repo.pullRequest.url} target="_blank">
+      <a href={repo.url} target="_blank">
+        <img src={repo.owner.avatarUrl} alt={repo.owner.login} height="70"/>
         <h2>{repo.owner.login}</h2>
-        <h3>
-          {new Date(repo.pullRequest.mergedAt).toLocaleDateString(
-            "en-US",
-            options
-          )}
-        </h3>
+        <h4>{repo.name}</h4>
+        <p>{repo.description}</p>
+        <p>{stars}</p>  
       </a>
     </OpenSourceStyle>
   );
@@ -67,15 +75,49 @@ export default () => (
       query onGitHub {
         githubData {
           data {
-            repository {
+            mateStack {
               owner {
                 login
                 avatarUrl
               }
-              pullRequest {
-                url
-                mergedAt
-                authorAssociation
+              name
+              url
+              description
+              stargazers {
+                totalCount
+              }
+              primaryLanguage {
+                name
+              }
+            }
+            secretsStore {
+              owner {
+                login
+                avatarUrl
+              }
+              name
+              url
+              description
+              stargazers {
+                totalCount
+              }
+              primaryLanguage {
+                name
+              }
+            }
+            devTo {
+              owner {
+                login
+                avatarUrl
+              }
+              name
+              url
+              description
+              stargazers {
+                totalCount
+              }
+              primaryLanguage {
+                name
               }
             }
           }

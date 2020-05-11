@@ -25,6 +25,7 @@ createGlobalStyle`
   html{
     box-sizing: border-box;
     font-size: 8px;
+    font-family: 'Lato', sans-serif;
   }
 
   *, *:before, *:after {
